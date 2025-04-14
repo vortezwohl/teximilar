@@ -11,11 +11,6 @@ def z_score_normalize(x: np.ndarray) -> np.ndarray:
     return (x - mean) / std_dev
 
 
-def kl_divergence(p: np.ndarray, q: np.ndarray) -> np.float32:
-    q = np.where(q == 0, 1e-10, q)
-    return np.sum(p * np.log(p / q))
-
-
 def euclidean_similarity(p: np.ndarray, q: np.ndarray) -> np.float32:
     distance = p - q
     distance = np.sum(np.multiply(distance, distance))
