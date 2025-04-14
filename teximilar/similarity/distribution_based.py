@@ -1,3 +1,4 @@
+# 越小越相似
 import numpy as np
 
 
