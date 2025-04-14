@@ -14,3 +14,10 @@ def kl_divergence(p: np.ndarray, q: np.ndarray) -> np.float32:
 def js_divergence(p: np.ndarray, q: np.ndarray) -> np.float32:
     m = (p + q) / 2
     return (kl_divergence(p, m) + kl_divergence(q, m)) / 2
+
+
+def hellinger_distance(p: np.ndarray, q: np.ndarray) -> np.float32:
+    p = p / np.sum(p)
+    q = q / np.sum(q)
+    squared_diff = (np.sqrt(p) - np.sqrt(q)) ** 2
+    return np.sqrt(np.sum(squared_diff)) / np.sqrt(2)
