@@ -4,6 +4,11 @@ import numpy as np
 from teximilar.similarity.set_based import bias
 
 
+def cross_entropy(p: np.ndarray, q: np.ndarray) -> np.float32:
+    q = np.clip(q, bias, 1 - bias)
+    return -1 * (np.sum(p * np.log(q)) / p.shape[0])
+
+
 def kl_divergence(p: np.ndarray, q: np.ndarray) -> np.float32:
     q = np.where(q == 0, bias, q)
     p = p / np.sum(p)
